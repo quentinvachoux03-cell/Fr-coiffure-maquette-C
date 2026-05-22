@@ -20,8 +20,8 @@ function AppInner() {
       <Header onMenu={() => setMenuOpen(true)} />
       <Showreel />
       <ThemeBar />
-      <Presentation />
       <Prestations />
+      <Presentation />
       <Team />
       <Footer />
       <MenuOverlay open={menuOpen} onClose={() => setMenuOpen(false)} />

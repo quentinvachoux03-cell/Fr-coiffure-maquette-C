@@ -52,20 +52,19 @@ export default function Showreel() {
           <span style={{ display: 'inline-block', width: 18, height: 1, background: 'rgba(255,255,255,0.35)' }} />
         </p>
 
-        {/* Title */}
+        {/* Title — same style as the rest of the site */}
         <h1 style={{
-          margin: '0 0 40px',
+          margin: '0 0 48px',
           animation: `hero-in 1s 0.25s ${E} both`,
           fontFamily: "'Open Sans', sans-serif",
-          fontWeight: 200,
-          fontSize: 'clamp(22px, 4vw, 46px)',
-          letterSpacing: '0.55em',
-          textTransform: 'uppercase',
-          color: 'rgba(255,255,255,0.82)',
-          lineHeight: 1,
-          paddingLeft: '0.55em',
+          fontWeight: 300,
+          fontSize: 'clamp(32px, 6vw, 68px)',
+          letterSpacing: '-0.01em',
+          lineHeight: 1.05,
+          color: '#fff',
         }}>
-          FR Coiffure
+          FR{' '}
+          <em style={{ fontStyle: 'italic', fontWeight: 300, color: C_ORANGE }}>Coiffure</em>
         </h1>
 
         <div style={{

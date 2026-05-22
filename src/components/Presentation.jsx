@@ -79,7 +79,7 @@ export default function Presentation() {
       <div className="a-up inline-flex items-center gap-3 mb-12 font-light"
         style={{ fontSize:9, letterSpacing:'0.55em', textTransform:'uppercase', color:C_ORANGE }}>
         <span style={{ display:'inline-block', width:16, height:1, background:C_ORANGE }} />
-        01 — Le Salon · Genève
+        02 — Le Salon · Genève
       </div>
 
       {/* Two columns */}
