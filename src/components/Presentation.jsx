@@ -119,7 +119,7 @@ export default function Presentation() {
             </div>
 
             <h2 className="a-up a-d1 font-sans m-0"
-              style={{ color:C_ANTH, fontWeight:600, fontSize:'clamp(34px, 4.2vw, 62px)', lineHeight:0.97, letterSpacing:'-0.01em' }}>
+              style={{ color:C_ANTH, fontWeight:300, fontSize:'clamp(34px, 4.2vw, 62px)', lineHeight:0.97, letterSpacing:'-0.01em' }}>
               Une{' '}
               <em style={{ fontStyle:'italic', fontWeight:400, color:C_ORANGE }}>signature</em>
               <br />genevoise,
@@ -161,7 +161,7 @@ export default function Presentation() {
             </div>
 
             <h3 className="a-up a-d1 font-sans m-0"
-              style={{ color:C_ANTH, fontWeight:600, fontSize:'clamp(30px, 3.8vw, 54px)', lineHeight:1.0, letterSpacing:'-0.01em', marginBottom:'clamp(24px, 3vw, 40px)' }}>
+              style={{ color:C_ANTH, fontWeight:300, fontSize:'clamp(30px, 3.8vw, 54px)', lineHeight:1.0, letterSpacing:'-0.01em', marginBottom:'clamp(24px, 3vw, 40px)' }}>
               Ce qui nous{' '}
               <em style={{ fontStyle:'italic', fontWeight:400, color:C_ORANGE }}>inspire.</em>
             </h3>

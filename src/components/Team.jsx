@@ -26,7 +26,7 @@ export default function Team() {
           </div>
           <h2
             className="font-sans m-0"
-            style={{ color: C_ANTH, fontWeight: 600, fontSize: 'clamp(26px, 5.5vw, 50px)', lineHeight: 1.05, letterSpacing: '-0.01em' }}
+            style={{ color: C_ANTH, fontWeight: 300, fontSize: 'clamp(26px, 5.5vw, 50px)', lineHeight: 1.05, letterSpacing: '-0.01em' }}
           >
             Les{' '}
             <em className="italic" style={{ fontWeight: 400, color: C_ORANGE }}>visages</em>

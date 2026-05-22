@@ -37,7 +37,7 @@ function ServiceCard({ service, index }) {
       >
         <h3 style={{
           margin:0, fontSize:'clamp(18px, 2.2vw, 26px)',
-          fontWeight:600, letterSpacing:'-0.005em', lineHeight:1.05,
+          fontWeight:300, letterSpacing:'-0.005em', lineHeight:1.05,
           color: open ? C_ORANGE : C_ANTH,
           transition:'color 0.3s',
         }}>
@@ -100,7 +100,7 @@ export default function Prestations() {
 
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8">
           <h2 className="a-up a-d1 font-sans m-0"
-            style={{ color:C_ANTH, fontWeight:600, fontSize:'clamp(34px, 5.5vw, 72px)', lineHeight:0.93, letterSpacing:'-0.01em' }}>
+            style={{ color:C_ANTH, fontWeight:300, fontSize:'clamp(34px, 5.5vw, 72px)', lineHeight:0.93, letterSpacing:'-0.01em' }}>
             L'art du{' '}
             <em style={{ fontStyle:'italic', fontWeight:400, color:C_ORANGE }}>soin</em>,<br />
             six expertises.
