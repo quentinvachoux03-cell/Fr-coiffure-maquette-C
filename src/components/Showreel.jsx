@@ -54,10 +54,10 @@ export default function Showreel() {
 
         <h1 style={{
           fontFamily: "'Open Sans', sans-serif",
-          fontWeight: 300,
-          fontSize: 'clamp(52px, 13vw, 124px)',
+          fontWeight: 600,
+          fontSize: 'clamp(48px, 12vw, 116px)',
           lineHeight: 0.92,
-          letterSpacing: '-0.02em',
+          letterSpacing: '-0.01em',
           color: '#fff',
           margin: '0 0 22px',
           animation: `hero-in 1s 0.28s ${E} both`,

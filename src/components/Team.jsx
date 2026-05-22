@@ -25,11 +25,11 @@ export default function Team() {
             03 — La Team
           </div>
           <h2
-            className="font-sans font-light m-0"
-            style={{ color: C_ANTH, fontSize: 'clamp(28px, 6vw, 54px)', lineHeight: 1.05, letterSpacing: '-0.02em' }}
+            className="font-sans m-0"
+            style={{ color: C_ANTH, fontWeight: 600, fontSize: 'clamp(26px, 5.5vw, 50px)', lineHeight: 1.05, letterSpacing: '-0.01em' }}
           >
             Les{' '}
-            <em className="italic" style={{ color: C_ORANGE }}>visages</em>
+            <em className="italic" style={{ fontWeight: 400, color: C_ORANGE }}>visages</em>
             {' '}de la maison.
           </h2>
         </div>
