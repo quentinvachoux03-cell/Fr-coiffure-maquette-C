@@ -7,6 +7,7 @@ import Prestations from './components/Prestations';
 import Team from './components/Team';
 import Footer from './components/Footer';
 import { ThemeProvider } from './context/ThemeContext';
+import ThemeBar from './components/ThemeBar';
 
 function AppInner() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -18,6 +19,7 @@ function AppInner() {
     >
       <Header onMenu={() => setMenuOpen(true)} />
       <Showreel />
+      <ThemeBar />
       <Presentation />
       <Prestations />
       <Team />

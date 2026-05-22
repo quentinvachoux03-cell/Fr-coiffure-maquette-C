@@ -1,12 +1,8 @@
-import { useTheme } from '../context/ThemeContext';
-import { LiquidToggle } from './LiquidToggle';
-
 const C_ORANGE = '#D94018';
 const E = 'cubic-bezier(0.16, 1, 0.3, 1)';
 const BASE = '/Fr-coiffure-maquette-C';
 
 export default function Showreel() {
-  const { darkMode, setDarkMode } = useTheme();
   return (
     <section
       id="accueil"
@@ -43,12 +39,11 @@ export default function Showreel() {
         maxWidth: 900,
         width: '100%',
       }}>
-        {/* Kicker */}
         <p style={{
           fontFamily: "'Open Sans', sans-serif",
           fontSize: 10, letterSpacing: '0.5em', textTransform: 'uppercase',
           color: 'rgba(255,255,255,0.5)', fontWeight: 300,
-          margin: '0 0 20px',
+          margin: '0 0 28px',
           display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 12,
           animation: `hero-in 0.8s 0.1s ${E} both`,
         }}>
@@ -57,39 +52,38 @@ export default function Showreel() {
           <span style={{ display: 'inline-block', width: 18, height: 1, background: 'rgba(255,255,255,0.35)' }} />
         </p>
 
-        {/* Main title — artistic split */}
-        <h1 style={{ margin: '0 0 28px', animation: `hero-in 1s 0.25s ${E} both` }}>
-          {/* "FR" — giant outlined, no fill */}
+        {/* Title — matches logo: orange disc + COIFFURE tracked */}
+        <h1 style={{
+          margin: '0 0 36px',
+          display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 20,
+          animation: `hero-in 1s 0.25s ${E} both`,
+        }}>
+          <div style={{
+            width: 'clamp(96px, 14vw, 148px)',
+            height: 'clamp(96px, 14vw, 148px)',
+            borderRadius: '50%',
+            background: C_ORANGE,
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+            boxShadow: '0 8px 48px rgba(217,64,24,0.4)',
+          }}>
+            <em style={{
+              fontFamily: "'Open Sans', sans-serif",
+              fontStyle: 'italic',
+              fontWeight: 700,
+              fontSize: 'clamp(32px, 5.2vw, 54px)',
+              color: '#fff',
+              letterSpacing: '0.02em',
+              lineHeight: 1,
+            }}>f.r.</em>
+          </div>
           <span style={{
-            display: 'block',
-            fontFamily: "'Cormorant Garant', serif",
+            fontFamily: "'Open Sans', sans-serif",
             fontWeight: 300,
-            fontStyle: 'italic',
-            fontSize: 'clamp(88px, 20vw, 210px)',
-            lineHeight: 0.82,
-            letterSpacing: '-0.02em',
-            color: 'transparent',
-            WebkitTextStroke: '1px rgba(255,255,255,0.85)',
-            textShadow: 'none',
-          }}>FR</span>
-          {/* Thin separator line */}
-          <span style={{
-            display: 'block',
-            width: 'clamp(60px, 10vw, 120px)',
-            height: 1,
-            background: 'rgba(255,255,255,0.35)',
-            margin: '10px auto 12px',
-          }} />
-          {/* "Coiffure" — filled, lighter weight */}
-          <span style={{
-            display: 'block',
-            fontFamily: "'Cormorant Garant', serif",
-            fontWeight: 300,
-            fontStyle: 'normal',
-            fontSize: 'clamp(18px, 4.5vw, 52px)',
-            letterSpacing: '0.38em',
+            fontSize: 'clamp(15px, 3.2vw, 36px)',
+            letterSpacing: '0.65em',
             textTransform: 'uppercase',
-            color: 'rgba(255,255,255,0.88)',
+            color: 'rgba(255,255,255,0.92)',
+            paddingLeft: '0.65em',
           }}>Coiffure</span>
         </h1>
 
@@ -105,11 +99,10 @@ export default function Showreel() {
               border: '1px solid rgba(255,255,255,0.55)',
               color: 'rgba(255,255,255,0.92)',
               padding: '14px 36px',
-              borderRadius: 0,
               textDecoration: 'none',
               fontFamily: "'Open Sans', sans-serif",
               fontSize: 11, letterSpacing: '0.32em', textTransform: 'uppercase', fontWeight: 300,
-              transition: 'background 0.35s, border-color 0.35s, color 0.35s',
+              transition: 'background 0.35s, border-color 0.35s',
             }}
             onMouseEnter={(e) => { e.currentTarget.style.background = 'rgba(255,255,255,0.1)'; e.currentTarget.style.borderColor = 'rgba(255,255,255,0.85)'; }}
             onMouseLeave={(e) => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.borderColor = 'rgba(255,255,255,0.55)'; }}
@@ -136,8 +129,9 @@ export default function Showreel() {
         </div>
       </div>
 
+      {/* Scroll indicator */}
       <div style={{
-        position: 'absolute', bottom: 20, left: '50%', transform: 'translateX(-50%)',
+        position: 'absolute', bottom: 28, left: '50%', transform: 'translateX(-50%)',
         zIndex: 2,
         display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 10,
         animation: `hero-in 1s 1.1s ${E} both`,
@@ -152,20 +146,6 @@ export default function Showreel() {
           animation: 'scroll-pulse 2.2s 1.8s ease-in-out infinite',
           transformOrigin: 'top',
         }} />
-
-        {/* Theme color toggle */}
-        <div style={{
-          display: 'flex', alignItems: 'center', gap: 10, marginTop: 4,
-        }}>
-          <span style={{
-            fontFamily: "'Open Sans', sans-serif",
-            fontSize: 9, letterSpacing: '0.22em', textTransform: 'uppercase',
-            color: 'rgba(255,255,255,0.38)', whiteSpace: 'nowrap',
-          }}>
-            Test couleur pour Frederico
-          </span>
-          <LiquidToggle checked={darkMode} onCheckedChange={setDarkMode} />
-        </div>
       </div>
     </section>
   );
