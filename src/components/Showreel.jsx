@@ -1,8 +1,12 @@
+import { useTheme } from '../context/ThemeContext';
+import { LiquidToggle } from './LiquidToggle';
+
 const C_ORANGE = '#D94018';
 const E = 'cubic-bezier(0.16, 1, 0.3, 1)';
 const BASE = '/Fr-coiffure-maquette-C';
 
 export default function Showreel() {
+  const { darkMode, setDarkMode } = useTheme();
   return (
     <section
       id="accueil"
@@ -133,7 +137,7 @@ export default function Showreel() {
       </div>
 
       <div style={{
-        position: 'absolute', bottom: 28, left: '50%', transform: 'translateX(-50%)',
+        position: 'absolute', bottom: 20, left: '50%', transform: 'translateX(-50%)',
         zIndex: 2,
         display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 10,
         animation: `hero-in 1s 1.1s ${E} both`,
@@ -148,6 +152,20 @@ export default function Showreel() {
           animation: 'scroll-pulse 2.2s 1.8s ease-in-out infinite',
           transformOrigin: 'top',
         }} />
+
+        {/* Theme color toggle */}
+        <div style={{
+          display: 'flex', alignItems: 'center', gap: 10, marginTop: 4,
+        }}>
+          <span style={{
+            fontFamily: "'Open Sans', sans-serif",
+            fontSize: 9, letterSpacing: '0.22em', textTransform: 'uppercase',
+            color: 'rgba(255,255,255,0.38)', whiteSpace: 'nowrap',
+          }}>
+            Test couleur pour Frederico
+          </span>
+          <LiquidToggle checked={darkMode} onCheckedChange={setDarkMode} />
+        </div>
       </div>
     </section>
   );

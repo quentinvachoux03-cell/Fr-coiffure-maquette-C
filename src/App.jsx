@@ -6,8 +6,9 @@ import Presentation from './components/Presentation';
 import Prestations from './components/Prestations';
 import Team from './components/Team';
 import Footer from './components/Footer';
+import { ThemeProvider } from './context/ThemeContext';
 
-export default function App() {
+function AppInner() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
@@ -23,5 +24,13 @@ export default function App() {
       <Footer />
       <MenuOverlay open={menuOpen} onClose={() => setMenuOpen(false)} />
     </div>
+  );
+}
+
+export default function App() {
+  return (
+    <ThemeProvider>
+      <AppInner />
+    </ThemeProvider>
   );
 }
