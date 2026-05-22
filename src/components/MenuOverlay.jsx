@@ -25,6 +25,14 @@ export default function MenuOverlay({ open, onClose }) {
       <style>{`
         @keyframes menuC-up   { 0% { transform: translateY(100%); } 100% { transform: translateY(0); } }
         @keyframes menuC-fade { 0% { opacity: 0; transform: translateY(14px); } 100% { opacity: 1; transform: translateY(0); } }
+        @media (max-width: 767px) {
+          .mc-topbar { padding: 16px 20px !important; }
+          .mc-cols   { grid-template-columns: 1fr !important; overflow-y: auto; }
+          .mc-col    { padding: 28px 20px !important; border-right: none !important; }
+          .mc-col:not(:last-child) { border-bottom: 1px solid rgba(58,58,58,0.18); }
+          .mc-footer { padding: 14px 20px !important; flex-wrap: wrap; gap: 10px; }
+          .mc-footer-info { display: none; }
+        }
       `}</style>
       <div style={{
         position: 'absolute', inset: 0,
@@ -33,7 +41,7 @@ export default function MenuOverlay({ open, onClose }) {
         display: 'flex', flexDirection: 'column',
       }}>
         {/* Top bar */}
-        <div style={{
+        <div className="mc-topbar" style={{
           display: 'flex', alignItems: 'center', justifyContent: 'space-between',
           padding: '26px 64px',
           borderBottom: '1px solid rgba(58,58,58,0.18)',
@@ -56,9 +64,9 @@ export default function MenuOverlay({ open, onClose }) {
         </div>
 
         {/* Columns */}
-        <div style={{ flex: 1, display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)' }}>
+        <div className="mc-cols" style={{ flex: 1, display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', overflowY: 'auto' }}>
           {MENU_SECTIONS.map((col, i) => (
-            <div key={col.title} style={{
+            <div key={col.title} className="mc-col" style={{
               padding: '90px 56px',
               borderRight: i < 2 ? '1px solid rgba(58,58,58,0.18)' : 'none',
               display: 'flex', flexDirection: 'column',
@@ -95,14 +103,14 @@ export default function MenuOverlay({ open, onClose }) {
         </div>
 
         {/* Footer strip */}
-        <div style={{
+        <div className="mc-footer" style={{
           display: 'flex', justifyContent: 'space-between', alignItems: 'center',
           padding: '22px 64px', borderTop: '1px solid rgba(58,58,58,0.18)',
           fontSize: 11, letterSpacing: '0.18em', textTransform: 'uppercase',
           color: 'rgba(58,58,58,0.65)', fontWeight: 300,
         }}>
           <span>Lundi — Samedi · 9h — 19h</span>
-          <span>contact@frcoiffure.ch · +41 (0)22 320 00 00</span>
+          <span className="mc-footer-info">contact@frcoiffure.ch · +41 (0)22 320 00 00</span>
           <a href="#book" onClick={onClose} style={{
             display: 'inline-flex', alignItems: 'center', gap: 10, background: C_ORANGE, color: '#fff',
             padding: '12px 26px', borderRadius: 999, fontFamily: 'inherit',

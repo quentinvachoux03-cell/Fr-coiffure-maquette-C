@@ -9,13 +9,13 @@ export default function Team() {
   return (
     <section
       id="team"
-      className="px-16 py-32 font-sans border-t"
+      className="px-5 sm:px-8 lg:px-16 py-16 lg:py-32 font-sans border-t"
       style={{ borderColor: C_HAIRLINE }}
     >
-      <div className="flex items-end justify-between mb-16">
+      <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10 lg:mb-16">
         <div>
           <div
-            className="inline-flex items-center gap-4 mb-6 font-light"
+            className="inline-flex items-center gap-4 mb-4 lg:mb-6 font-light"
             style={{ fontSize: 11, letterSpacing: '0.4em', textTransform: 'uppercase', color: C_ORANGE }}
           >
             <span style={{ display: 'inline-block', width: 32, height: 1, background: C_ORANGE }}></span>
@@ -23,7 +23,7 @@ export default function Team() {
           </div>
           <h2
             className="font-sans font-light m-0"
-            style={{ color: C_ANTH, fontSize: 54, lineHeight: 1.05, letterSpacing: '-0.02em' }}
+            style={{ color: C_ANTH, fontSize: 'clamp(28px, 6vw, 54px)', lineHeight: 1.05, letterSpacing: '-0.02em' }}
           >
             Les{' '}
             <em className="italic" style={{ color: C_ORANGE }}>visages</em>
@@ -32,7 +32,7 @@ export default function Team() {
         </div>
         <a
           href="#"
-          className="font-light"
+          className="font-light self-start sm:self-auto"
           style={{
             color: C_ANTH, textDecoration: 'none',
             fontSize: 11, letterSpacing: '0.28em', textTransform: 'uppercase',
@@ -46,17 +46,17 @@ export default function Team() {
         </a>
       </div>
 
-      <div className="grid grid-cols-3 gap-10">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-10">
         {TEAM.map((member, i) => (
           <div key={member.name}>
             <div className="relative" style={{ aspectRatio: '4/5' }}>
               <HairPortrait variant={member.variant} frame="thin" idSeed={310 + i} />
             </div>
-            <div className="mt-5 pt-5 border-t" style={{ borderColor: C_HAIRLINE }}>
+            <div className="mt-4 pt-4 lg:mt-5 lg:pt-5 border-t" style={{ borderColor: C_HAIRLINE }}>
               <div className="flex items-baseline justify-between">
                 <div
                   className="font-sans font-light tracking-tight"
-                  style={{ fontSize: 22, color: C_ANTH }}
+                  style={{ fontSize: 'clamp(18px, 3vw, 22px)', color: C_ANTH }}
                 >
                   {member.name}
                 </div>

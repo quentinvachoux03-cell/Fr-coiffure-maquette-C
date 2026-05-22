@@ -7,19 +7,19 @@ const C_CREAM  = '#f5ede0';
 export default function Footer() {
   return (
     <footer
-      className="px-16 pt-24 pb-12 font-sans"
+      className="px-5 sm:px-8 lg:px-16 pt-14 pb-10 lg:pt-24 lg:pb-12 font-sans"
       style={{ background: C_FOREST, color: C_CREAM }}
     >
-      <div className="grid gap-12" style={{ gridTemplateColumns: '0.9fr 1.1fr 1fr 1.1fr' }}>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-12">
 
         {/* Brand + badges */}
         <div>
           <div className="flex items-center gap-3">
             <div
               className="flex items-center justify-center rounded-full"
-              style={{ width: 64, height: 64, background: C_ORANGE }}
+              style={{ width: 56, height: 56, background: C_ORANGE }}
             >
-              <em className="italic font-bold text-white" style={{ fontSize: 24, lineHeight: 1 }}>f.r.</em>
+              <em className="italic font-bold text-white" style={{ fontSize: 22, lineHeight: 1 }}>f.r.</em>
             </div>
             <div
               className="font-light tracking-widest uppercase"
@@ -30,27 +30,27 @@ export default function Footer() {
           </div>
 
           <p
-            className="font-sans font-light mt-8 max-w-[280px]"
+            className="font-sans font-light mt-6 lg:mt-8 max-w-[280px]"
             style={{ fontSize: 14, lineHeight: 1.8, color: 'rgba(245,237,224,0.75)' }}
           >
             Maison indépendante à Plainpalais, Genève — depuis la fin des années 2000.
           </p>
 
-          <div className="flex items-center gap-3 mt-10">
+          <div className="flex items-center gap-3 mt-8 lg:mt-10">
             <div
               className="flex flex-col items-center justify-center rounded-full border"
-              style={{ width: 64, height: 64, borderColor: 'rgba(245,237,224,0.75)' }}
+              style={{ width: 56, height: 56, borderColor: 'rgba(245,237,224,0.75)' }}
             >
               <span style={{ fontSize: 7, letterSpacing: '0.18em', textTransform: 'uppercase', lineHeight: 1 }}>Entreprise</span>
-              <span className="font-bold mt-1" style={{ fontSize: 22, lineHeight: 1 }}>B</span>
+              <span className="font-bold mt-1" style={{ fontSize: 20, lineHeight: 1 }}>B</span>
               <span style={{ fontSize: 7, letterSpacing: '0.18em', textTransform: 'uppercase', lineHeight: 1, marginTop: 4 }}>Certifiée</span>
             </div>
             <div
               className="flex flex-col items-center justify-center text-center rounded-full border"
-              style={{ width: 64, height: 64, borderColor: 'rgba(245,237,224,0.75)' }}
+              style={{ width: 56, height: 56, borderColor: 'rgba(245,237,224,0.75)' }}
             >
               <span style={{ fontSize: 7, letterSpacing: '0.18em', textTransform: 'uppercase', lineHeight: 1 }}>Label</span>
-              <span className="font-medium mt-1" style={{ fontSize: 10, letterSpacing: '0.1em', textTransform: 'uppercase', lineHeight: 1 }}>Éco-Salon</span>
+              <span className="font-medium mt-1" style={{ fontSize: 9, letterSpacing: '0.1em', textTransform: 'uppercase', lineHeight: 1 }}>Éco-Salon</span>
               <span className="rounded-full mt-1.5" style={{ width: 6, height: 6, background: C_ORANGE }}></span>
             </div>
           </div>
@@ -180,7 +180,7 @@ export default function Footer() {
       </div>
 
       <div
-        className="mt-20 pt-6 border-t flex justify-between font-sans font-light"
+        className="mt-14 lg:mt-20 pt-6 border-t flex flex-col sm:flex-row justify-between gap-2 font-sans font-light"
         style={{
           borderColor: 'rgba(245,237,224,0.15)',
           fontSize: 11, letterSpacing: '0.18em', textTransform: 'uppercase',
