@@ -68,7 +68,7 @@ export default function Hero() {
         </div>
 
         <div className="relative w-full max-w-[320px] sm:max-w-[400px] mx-auto lg:max-w-none mt-4 lg:mt-0" style={{ aspectRatio: '4/5' }}>
-          <HairPortrait variant="longFlow" frame="card" caption="Pl. № 01" sig="Salon Plainpalais" idSeed={201} />
+          <HairPortrait variant="editorialFlow" frame="card" caption="Pl. № 01" sig="Salon Plainpalais" idSeed={201} />
         </div>
       </div>
     </section>
