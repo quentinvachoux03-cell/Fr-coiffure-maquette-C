@@ -52,39 +52,21 @@ export default function Showreel() {
           <span style={{ display: 'inline-block', width: 18, height: 1, background: 'rgba(255,255,255,0.35)' }} />
         </p>
 
-        {/* Title — matches logo: orange disc + COIFFURE tracked */}
+        {/* Title — FR COIFFURE */}
         <h1 style={{
           margin: '0 0 36px',
-          display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 20,
           animation: `hero-in 1s 0.25s ${E} both`,
+          fontFamily: "'Open Sans', sans-serif",
+          fontWeight: 300,
+          fontSize: 'clamp(48px, 11vw, 130px)',
+          letterSpacing: '0.18em',
+          textTransform: 'uppercase',
+          color: '#fff',
+          lineHeight: 1,
+          textShadow: '0 2px 24px rgba(0,0,0,0.18)',
         }}>
-          <div style={{
-            width: 'clamp(96px, 14vw, 148px)',
-            height: 'clamp(96px, 14vw, 148px)',
-            borderRadius: '50%',
-            background: C_ORANGE,
-            display: 'flex', alignItems: 'center', justifyContent: 'center',
-            boxShadow: '0 8px 48px rgba(217,64,24,0.4)',
-          }}>
-            <em style={{
-              fontFamily: "'Open Sans', sans-serif",
-              fontStyle: 'italic',
-              fontWeight: 700,
-              fontSize: 'clamp(32px, 5.2vw, 54px)',
-              color: '#fff',
-              letterSpacing: '0.02em',
-              lineHeight: 1,
-            }}>f.r.</em>
-          </div>
-          <span style={{
-            fontFamily: "'Open Sans', sans-serif",
-            fontWeight: 300,
-            fontSize: 'clamp(15px, 3.2vw, 36px)',
-            letterSpacing: '0.65em',
-            textTransform: 'uppercase',
-            color: 'rgba(255,255,255,0.92)',
-            paddingLeft: '0.65em',
-          }}>Coiffure</span>
+          <span style={{ color: C_ORANGE, fontWeight: 600 }}>FR</span>
+          {' '}Coiffure
         </h1>
 
         <div style={{
