@@ -22,7 +22,7 @@ export default function Presentation() {
         >
           <div style={{ position: 'relative', width: '100%', height: '100%', overflow: 'hidden' }}>
             <img
-              src="/Fr-coiffure-maquette-C/federico.jpg"
+              src="/Fr-coiffure-maquette-C/frederico-renda.jpg"
               alt="Federico Renda — FR Coiffure"
               style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top', display: 'block' }}
             />
