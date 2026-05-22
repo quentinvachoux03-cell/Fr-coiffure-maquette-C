@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Header from './components/Header';
 import MenuOverlay from './components/MenuOverlay';
-import Hero from './components/Hero';
+import Showreel from './components/Showreel';
 import Presentation from './components/Presentation';
 import Prestations from './components/Prestations';
 import Team from './components/Team';
@@ -16,7 +16,7 @@ export default function App() {
       style={{ background: '#E8E8E8', color: '#3A3A3A', minHeight: '100vh' }}
     >
       <Header onMenu={() => setMenuOpen(true)} />
-      <Hero />
+      <Showreel />
       <Presentation />
       <Prestations />
       <Team />
