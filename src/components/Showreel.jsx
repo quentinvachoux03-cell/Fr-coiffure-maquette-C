@@ -39,45 +39,55 @@ export default function Showreel() {
         maxWidth: 900,
         width: '100%',
       }}>
+        {/* Kicker */}
         <p style={{
           fontFamily: "'Open Sans', sans-serif",
-          fontSize: 11, letterSpacing: '0.45em', textTransform: 'uppercase',
-          color: 'rgba(255,255,255,0.6)', fontWeight: 300,
-          margin: '0 0 28px',
-          display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 14,
+          fontSize: 10, letterSpacing: '0.5em', textTransform: 'uppercase',
+          color: 'rgba(255,255,255,0.5)', fontWeight: 300,
+          margin: '0 0 20px',
+          display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 12,
           animation: `hero-in 0.8s 0.1s ${E} both`,
         }}>
-          <span style={{ display: 'inline-block', width: 22, height: 1, background: 'rgba(255,255,255,0.4)' }} />
-          Genève · Plainpalais
-          <span style={{ display: 'inline-block', width: 22, height: 1, background: 'rgba(255,255,255,0.4)' }} />
+          <span style={{ display: 'inline-block', width: 18, height: 1, background: 'rgba(255,255,255,0.35)' }} />
+          Genève · Plainpalais · Depuis 2008
+          <span style={{ display: 'inline-block', width: 18, height: 1, background: 'rgba(255,255,255,0.35)' }} />
         </p>
 
-        <h1 style={{
-          fontFamily: "'Sacramento', cursive",
-          fontWeight: 400,
-          fontSize: 'clamp(80px, 18vw, 172px)',
-          lineHeight: 0.88,
-          letterSpacing: '0.02em',
-          color: '#fff',
-          margin: '0 0 22px',
-          animation: `hero-in 1s 0.28s ${E} both`,
-          textShadow: '0 2px 32px rgba(0,0,0,0.2)',
-        }}>
-          FR Coiffure
+        {/* Main title — artistic split */}
+        <h1 style={{ margin: '0 0 28px', animation: `hero-in 1s 0.25s ${E} both` }}>
+          {/* "FR" — giant outlined, no fill */}
+          <span style={{
+            display: 'block',
+            fontFamily: "'Cormorant Garant', serif",
+            fontWeight: 300,
+            fontStyle: 'italic',
+            fontSize: 'clamp(88px, 20vw, 210px)',
+            lineHeight: 0.82,
+            letterSpacing: '-0.02em',
+            color: 'transparent',
+            WebkitTextStroke: '1px rgba(255,255,255,0.85)',
+            textShadow: 'none',
+          }}>FR</span>
+          {/* Thin separator line */}
+          <span style={{
+            display: 'block',
+            width: 'clamp(60px, 10vw, 120px)',
+            height: 1,
+            background: 'rgba(255,255,255,0.35)',
+            margin: '10px auto 12px',
+          }} />
+          {/* "Coiffure" — filled, lighter weight */}
+          <span style={{
+            display: 'block',
+            fontFamily: "'Cormorant Garant', serif",
+            fontWeight: 300,
+            fontStyle: 'normal',
+            fontSize: 'clamp(18px, 4.5vw, 52px)',
+            letterSpacing: '0.38em',
+            textTransform: 'uppercase',
+            color: 'rgba(255,255,255,0.88)',
+          }}>Coiffure</span>
         </h1>
-
-        <p style={{
-          fontFamily: "'Open Sans', sans-serif",
-          fontSize: 'clamp(10px, 1.8vw, 13px)',
-          letterSpacing: '0.38em',
-          textTransform: 'uppercase',
-          color: 'rgba(255,255,255,0.65)',
-          fontWeight: 300,
-          margin: '0 0 52px',
-          animation: `hero-in 0.9s 0.46s ${E} both`,
-        }}>
-          Salon de coiffure
-        </p>
 
         <div style={{
           display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 22,
