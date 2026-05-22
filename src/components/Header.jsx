@@ -6,8 +6,7 @@ const C_HAIRLINE = 'rgba(58,58,58,0.18)';
 const BASE       = '/Fr-coiffure-maquette-C/';
 
 function MenuButton({ onClick, transparent }) {
-  const col    = transparent ? 'rgba(255,255,255,0.88)' : C_ANTH;
-  const border = transparent ? 'rgba(255,255,255,0.38)' : 'rgba(58,58,58,0.35)';
+  const col = transparent ? 'rgba(255,255,255,0.88)' : C_ANTH;
   return (
     <button
       type="button"
@@ -15,18 +14,19 @@ function MenuButton({ onClick, transparent }) {
       style={{
         display: 'inline-flex', alignItems: 'center', gap: 10,
         background: 'transparent',
-        border: `1px solid ${border}`,
+        border: 'none',
         color: col,
-        padding: '9px 16px',
-        borderRadius: 999,
+        padding: '9px 4px',
         cursor: 'pointer',
         fontFamily: "'Open Sans', sans-serif",
         fontSize: 11,
         letterSpacing: '0.28em',
         textTransform: 'uppercase',
         fontWeight: 400,
-        transition: 'color 0.4s, border-color 0.4s',
+        transition: 'color 0.4s, opacity 0.3s',
       }}
+      onMouseEnter={(e) => { e.currentTarget.style.opacity = '0.65'; }}
+      onMouseLeave={(e) => { e.currentTarget.style.opacity = '1'; }}
     >
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.25">
         <line x1="3" y1="8"  x2="21" y2="8"/>

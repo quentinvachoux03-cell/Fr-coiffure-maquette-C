@@ -53,14 +53,15 @@ export default function Showreel() {
         </p>
 
         <h1 style={{
-          fontFamily: "'Open Sans', sans-serif",
-          fontWeight: 600,
-          fontSize: 'clamp(48px, 12vw, 116px)',
-          lineHeight: 0.92,
-          letterSpacing: '-0.01em',
+          fontFamily: "'Sacramento', cursive",
+          fontWeight: 400,
+          fontSize: 'clamp(80px, 18vw, 172px)',
+          lineHeight: 0.88,
+          letterSpacing: '0.02em',
           color: '#fff',
           margin: '0 0 22px',
           animation: `hero-in 1s 0.28s ${E} both`,
+          textShadow: '0 2px 32px rgba(0,0,0,0.2)',
         }}>
           FR Coiffure
         </h1>

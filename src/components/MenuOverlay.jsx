@@ -40,10 +40,12 @@ export default function MenuOverlay({ open, onClose }) {
         }
       `}</style>
 
-      {/* Semi-transparent backdrop — clicking it closes */}
+      {/* Blurred backdrop — clicking it closes */}
       <div style={{
         position: 'absolute', inset: 0,
-        background: 'rgba(0,0,0,0.35)',
+        background: 'rgba(20,18,16,0.62)',
+        backdropFilter: 'blur(8px)',
+        WebkitBackdropFilter: 'blur(8px)',
         animation: 'menuC-back 0.4s ease both',
       }} />
 

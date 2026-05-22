@@ -2,8 +2,8 @@ import { SALON } from '../data';
 import { useReveal } from '../hooks/useReveal';
 
 const C_ORANGE = '#D94018';
-const C_FOREST = '#1c2a23';
-const C_CREAM  = '#f5ede0';
+const C_FOREST = '#8C8C8C';
+const C_CREAM  = '#ffffff';
 
 export default function Footer() {
   const ref = useReveal(0.05);
