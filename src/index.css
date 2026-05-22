@@ -14,31 +14,75 @@ html, body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-#root {
-  width: 100%;
-}
-
+#root { width: 100%; }
 a { -webkit-tap-highlight-color: transparent; }
 button { font-family: inherit; }
 em { font-style: italic; }
 
-/* ── Collapse animation (accordion) ── */
+/* ── KEYFRAMES ── */
 @keyframes c-fade-up {
-  0%   { opacity: 0; transform: translateY(14px); }
-  100% { opacity: 1; transform: translateY(0); }
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: none; }
 }
-
 @keyframes c-line-grow {
-  0%   { transform: scaleX(0); }
-  100% { transform: scaleX(1); }
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
 }
-
 @keyframes menu-slide-up {
-  0%   { transform: translateY(100%); }
-  100% { transform: translateY(0); }
+  from { transform: translateY(100%); }
+  to   { transform: translateY(0); }
+}
+@keyframes menu-item-fade {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: none; }
 }
 
-@keyframes menu-item-fade {
-  0%   { opacity: 0; transform: translateY(14px); }
-  100% { opacity: 1; transform: translateY(0); }
+/* Hero load animations */
+@keyframes hero-in {
+  from { opacity: 0; transform: translateY(32px); }
+  to   { opacity: 1; transform: none; }
 }
+@keyframes hero-line {
+  from { transform: scaleX(0); opacity: 1; }
+  to   { transform: scaleX(1); opacity: 1; }
+}
+@keyframes hero-photo {
+  from { opacity: 0; transform: scale(1.04) translateX(20px); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* ── SCROLL REVEAL SYSTEM ── */
+.a-up, .a-fade, .a-scale {
+  opacity: 0;
+  transition-property: opacity, transform;
+  transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+  transition-duration: 0.95s;
+  will-change: opacity, transform;
+}
+.a-up    { transform: translateY(38px); }
+.a-fade  { transform: translateY(0); }
+.a-scale { transform: scale(0.95) translateY(16px); transition-duration: 1.15s; }
+
+.a-d1 { transition-delay: 0.08s; }
+.a-d2 { transition-delay: 0.18s; }
+.a-d3 { transition-delay: 0.30s; }
+.a-d4 { transition-delay: 0.42s; }
+.a-d5 { transition-delay: 0.54s; }
+.a-d6 { transition-delay: 0.66s; }
+
+.vis .a-up,
+.vis .a-fade,
+.vis .a-scale {
+  opacity: 1;
+  transform: none;
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .a-up, .a-fade, .a-scale {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
+

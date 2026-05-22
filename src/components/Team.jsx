@@ -1,18 +1,21 @@
 import HairPortrait from './HairPortrait';
 import { TEAM } from '../data';
+import { useReveal } from '../hooks/useReveal';
 
 const C_ANTH     = '#3A3A3A';
 const C_ORANGE   = '#D94018';
 const C_HAIRLINE = 'rgba(58,58,58,0.18)';
 
 export default function Team() {
+  const ref = useReveal();
   return (
     <section
+      ref={ref}
       id="team"
       className="px-5 sm:px-8 lg:px-16 py-16 lg:py-32 font-sans border-t"
       style={{ borderColor: C_HAIRLINE }}
     >
-      <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10 lg:mb-16">
+      <div className="a-up flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10 lg:mb-16">
         <div>
           <div
             className="inline-flex items-center gap-4 mb-4 lg:mb-6 font-light"
@@ -37,7 +40,7 @@ export default function Team() {
             color: C_ANTH, textDecoration: 'none',
             fontSize: 11, letterSpacing: '0.28em', textTransform: 'uppercase',
             borderBottom: '1px solid rgba(58,58,58,0.3)', paddingBottom: 4,
-            transition: 'color 0.2s, border-color 0.2s',
+            transition: 'color 0.3s, border-color 0.3s',
           }}
           onMouseEnter={(e) => { e.currentTarget.style.color = C_ORANGE; e.currentTarget.style.borderBottomColor = C_ORANGE; }}
           onMouseLeave={(e) => { e.currentTarget.style.color = C_ANTH; e.currentTarget.style.borderBottomColor = 'rgba(58,58,58,0.3)'; }}
@@ -48,7 +51,7 @@ export default function Team() {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-10">
         {TEAM.map((member, i) => (
-          <div key={member.name}>
+          <div key={member.name} className={`a-scale a-d${i + 1}`}>
             <div className="relative" style={{ aspectRatio: '4/5' }}>
               <HairPortrait variant={member.variant} frame="thin" idSeed={310 + i} />
             </div>

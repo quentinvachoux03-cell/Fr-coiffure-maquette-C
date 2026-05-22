@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { SERVICES } from '../data';
+import { useReveal } from '../hooks/useReveal';
 
 const C_ANTH     = '#3A3A3A';
 const C_ORANGE   = '#D94018';
@@ -8,9 +9,11 @@ const C_HAIRLINE = 'rgba(58,58,58,0.18)';
 export default function Prestations() {
   const [idx, setIdx] = useState(0);
   const cat = SERVICES[idx];
+  const ref = useReveal();
 
   return (
     <section
+      ref={ref}
       id="reservation"
       className="px-5 sm:px-8 lg:px-16 py-16 lg:py-40 font-sans border-t"
       style={{ borderColor: C_HAIRLINE }}
@@ -19,7 +22,7 @@ export default function Prestations() {
 
         {/* Eyebrow */}
         <div
-          className="inline-flex items-center gap-4 mb-8 lg:mb-10 font-light"
+          className="a-up inline-flex items-center gap-4 mb-8 lg:mb-10 font-light"
           style={{ fontSize: 11, letterSpacing: '0.4em', textTransform: 'uppercase', color: C_ORANGE }}
         >
           <span style={{ display: 'inline-block', width: 32, height: 1, background: C_ORANGE }}></span>
@@ -28,7 +31,7 @@ export default function Prestations() {
         </div>
 
         {/* Tab strip */}
-        <div className="flex flex-wrap justify-center items-center mb-14 lg:mb-24" style={{ rowGap: 8 }}>
+        <div className="a-up a-d1 flex flex-wrap justify-center items-center mb-14 lg:mb-24" style={{ rowGap: 8 }}>
           {SERVICES.map((s, i) => {
             const active = idx === i;
             return (
