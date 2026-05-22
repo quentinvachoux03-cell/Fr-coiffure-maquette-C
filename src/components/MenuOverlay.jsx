@@ -98,11 +98,14 @@ export default function MenuOverlay({ open, onClose }) {
                 </span>
               </div>
               <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: 12 }}>
-                {col.items.map((item, idx) => (
-                  <li key={item} style={{ animation: `menuC-fade 0.4s ${0.25 + idx * 0.045 + i * 0.05}s both` }}>
+                {col.items.map((item, idx) => {
+                  const label = typeof item === 'string' ? item : item.label;
+                  const href  = typeof item === 'string' ? '#' : item.href;
+                  return (
+                  <li key={label} style={{ animation: `menuC-fade 0.4s ${0.25 + idx * 0.045 + i * 0.05}s both` }}>
                     <a
-                      href="#"
-                      onClick={(e) => { e.preventDefault(); onClose(); }}
+                      href={href}
+                      onClick={onClose}
                       style={{
                         color: C_ANTH, textDecoration: 'none',
                         fontFamily: "'Open Sans', sans-serif", fontWeight: 300,
@@ -113,11 +116,13 @@ export default function MenuOverlay({ open, onClose }) {
                       onMouseEnter={(e) => { e.currentTarget.style.color = C_ORANGE; e.currentTarget.style.paddingLeft = '8px'; }}
                       onMouseLeave={(e) => { e.currentTarget.style.color = C_ANTH; e.currentTarget.style.paddingLeft = '0'; }}
                     >
-                      {item}
+                      {label}
                     </a>
                   </li>
-                ))}
+                  );
+                })}
               </ul>
+
             </div>
           ))}
         </div>
