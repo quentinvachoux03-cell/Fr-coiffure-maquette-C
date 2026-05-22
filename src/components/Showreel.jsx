@@ -1,7 +1,6 @@
-import heroImg from '../assets/hero.png';
-
 const C_ORANGE = '#D94018';
 const E = 'cubic-bezier(0.16, 1, 0.3, 1)';
+const BASE = '/Fr-coiffure-maquette-C';
 
 export default function Showreel() {
   return (
@@ -19,7 +18,7 @@ export default function Showreel() {
       }}
     >
       <img
-        src={heroImg}
+        src={`${BASE}/Photo%20Fond%20ecran%20aceuille.jpg`}
         alt="FR Coiffure — Salon Plainpalais"
         style={{
           position: 'absolute', inset: 0,

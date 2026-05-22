@@ -1,10 +1,10 @@
-import HairPortrait from './HairPortrait';
 import { TEAM } from '../data';
 import { useReveal } from '../hooks/useReveal';
 
 const C_ANTH     = '#3A3A3A';
 const C_ORANGE   = '#D94018';
 const C_HAIRLINE = 'rgba(58,58,58,0.18)';
+const BASE       = '/Fr-coiffure-maquette-C';
 
 export default function Team() {
   const ref = useReveal();
@@ -52,8 +52,25 @@ export default function Team() {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-10">
         {TEAM.map((member, i) => (
           <div key={member.name} className={`a-scale a-d${i + 1}`}>
-            <div className="relative" style={{ aspectRatio: '4/5' }}>
-              <HairPortrait variant={member.variant} frame="thin" idSeed={310 + i} />
+            <div
+              style={{
+                aspectRatio: '4/5',
+                overflow: 'hidden',
+                background: '#d8d3cc',
+              }}
+            >
+              <img
+                src={`${BASE}/${encodeURIComponent(member.photo)}`}
+                alt={member.name}
+                style={{
+                  width: '100%', height: '100%',
+                  objectFit: 'cover', objectPosition: 'center top',
+                  display: 'block',
+                  transition: 'transform 0.7s cubic-bezier(0.16, 1, 0.3, 1)',
+                }}
+                onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.04)'}
+                onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
+              />
             </div>
             <div className="mt-4 pt-4 lg:mt-5 lg:pt-5 border-t" style={{ borderColor: C_HAIRLINE }}>
               <div className="flex items-baseline justify-between">

@@ -57,12 +57,12 @@ export const SALON = {
 };
 
 export const TEAM = [
-  { name: 'Federico Renda', role: 'Fondateur · Coloriste signature', variant: 'longFlow', since: '2008' },
-  { name: 'Lana',            role: 'Styliste senior',                 variant: 'bob',      since: '2014' },
-  { name: 'Charles',         role: 'Barbier · Coupe homme',           variant: 'straight', since: '2016' },
-  { name: 'Inès',            role: 'Coloration végétale',             variant: 'curls',    since: '2019' },
-  { name: 'Maël',            role: 'Mèches & balayage',               variant: 'balayage', since: '2021' },
-  { name: 'Selma',           role: 'Soins & rituels capillaires',      variant: 'updo',     since: '2022' },
+  { name: 'Federico Renda', role: 'Fondateur · Coloriste signature', photo: 'portrait 1.jpg',  since: '2008' },
+  { name: 'Lana',            role: 'Styliste senior',                 photo: 'portrait 2.jpg',  since: '2014' },
+  { name: 'Charles',         role: 'Barbier · Coupe homme',           photo: 'Portrait 3.jpg',  since: '2016' },
+  { name: 'Inès',            role: 'Coloration végétale',             photo: 'Portrait 4.jpg',  since: '2019' },
+  { name: 'Maël',            role: 'Mèches & balayage',               photo: 'portrait 5.jpg',  since: '2021' },
+  { name: 'Selma',           role: 'Soins & rituels capillaires',      photo: 'Portrait 6.jpg',  since: '2022' },
 ];
 
 export const MENU_SECTIONS = [
