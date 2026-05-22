@@ -1,4 +1,3 @@
-import HairPortrait from './HairPortrait';
 import { PRESENTATION } from '../data';
 
 const C_ANTH     = '#3A3A3A';
@@ -12,8 +11,36 @@ export default function Presentation() {
       style={{ borderColor: C_HAIRLINE }}
     >
       <div className="grid grid-cols-1 lg:grid-cols-[0.95fr_1.05fr] items-start gap-10 lg:gap-24">
-        <div className="relative w-full max-w-[320px] sm:max-w-[380px] mx-auto lg:max-w-none lg:mt-10" style={{ aspectRatio: '4/5' }}>
-          <HairPortrait variant="balayage" frame="card" caption="Balayage caramel" sig="Salon Plainpalais" idSeed={202} />
+        <div
+          className="relative w-full max-w-[320px] sm:max-w-[380px] mx-auto lg:max-w-none lg:mt-10"
+          style={{
+            aspectRatio: '4/5',
+            padding: 14,
+            background: '#fff',
+            boxShadow: '0 22px 60px rgba(58,58,58,0.16), 0 2px 6px rgba(58,58,58,0.08)',
+          }}
+        >
+          <div style={{ position: 'relative', width: '100%', height: '100%', overflow: 'hidden' }}>
+            <img
+              src="/Fr-coiffure-maquette-C/federico.jpg"
+              alt="Federico Renda — FR Coiffure"
+              style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top', display: 'block' }}
+            />
+            {/* Caption overlay */}
+            <div style={{
+              position: 'absolute', left: 0, right: 0, bottom: 0,
+              display: 'flex', justifyContent: 'space-between',
+              padding: '12px 16px',
+              background: 'linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.32) 100%)',
+              color: '#fff',
+              fontFamily: "'Open Sans', sans-serif",
+              fontSize: 10, letterSpacing: '0.25em', textTransform: 'uppercase',
+              fontWeight: 300,
+            }}>
+              <span>Pl. № 02</span>
+              <em style={{ fontStyle: 'italic', letterSpacing: '0.08em', textTransform: 'none' }}>Federico Renda</em>
+            </div>
+          </div>
         </div>
 
         <div className="pt-0 lg:pt-6">
