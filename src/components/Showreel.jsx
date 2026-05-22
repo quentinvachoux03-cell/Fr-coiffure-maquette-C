@@ -52,59 +52,56 @@ export default function Showreel() {
           <span style={{ display: 'inline-block', width: 18, height: 1, background: 'rgba(255,255,255,0.35)' }} />
         </p>
 
-        {/* Title — FR COIFFURE */}
+        {/* Title */}
         <h1 style={{
-          margin: '0 0 36px',
+          margin: '0 0 40px',
           animation: `hero-in 1s 0.25s ${E} both`,
           fontFamily: "'Open Sans', sans-serif",
-          fontWeight: 300,
-          fontSize: 'clamp(26px, 5vw, 58px)',
-          letterSpacing: '0.18em',
+          fontWeight: 200,
+          fontSize: 'clamp(22px, 4vw, 46px)',
+          letterSpacing: '0.55em',
           textTransform: 'uppercase',
-          color: 'rgba(255,255,255,0.92)',
+          color: 'rgba(255,255,255,0.82)',
           lineHeight: 1,
-          textAlign: 'left',
-          width: '100%',
+          paddingLeft: '0.55em',
         }}>
           FR Coiffure
         </h1>
 
         <div style={{
-          display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 22,
+          display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 20,
           animation: `hero-in 0.85s 0.64s ${E} both`,
         }}>
           <a
             href="#reservation"
             style={{
-              display: 'inline-flex', alignItems: 'center', gap: 12,
+              display: 'inline-flex', alignItems: 'center', gap: 14,
               background: 'transparent',
-              border: '1px solid rgba(255,255,255,0.55)',
-              color: 'rgba(255,255,255,0.92)',
-              padding: '14px 36px',
+              border: '1px solid rgba(255,255,255,0.32)',
+              color: 'rgba(255,255,255,0.75)',
+              padding: '12px 32px',
               textDecoration: 'none',
               fontFamily: "'Open Sans', sans-serif",
-              fontSize: 11, letterSpacing: '0.32em', textTransform: 'uppercase', fontWeight: 300,
-              transition: 'background 0.35s, border-color 0.35s',
+              fontSize: 9, letterSpacing: '0.42em', textTransform: 'uppercase', fontWeight: 300,
+              transition: 'border-color 0.35s, color 0.35s',
             }}
-            onMouseEnter={(e) => { e.currentTarget.style.background = 'rgba(255,255,255,0.1)'; e.currentTarget.style.borderColor = 'rgba(255,255,255,0.85)'; }}
-            onMouseLeave={(e) => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.borderColor = 'rgba(255,255,255,0.55)'; }}
+            onMouseEnter={(e) => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.65)'; e.currentTarget.style.color = '#fff'; }}
+            onMouseLeave={(e) => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.32)'; e.currentTarget.style.color = 'rgba(255,255,255,0.75)'; }}
           >
-            Prendre rendez-vous <span aria-hidden="true">→</span>
+            Prendre rendez-vous
           </a>
 
           <a
             href="#prestations"
             style={{
-              color: 'rgba(255,255,255,0.75)',
+              color: 'rgba(255,255,255,0.45)',
               textDecoration: 'none',
               fontFamily: "'Open Sans', sans-serif",
-              fontSize: 11, letterSpacing: '0.26em', textTransform: 'uppercase', fontWeight: 300,
-              borderBottom: '1px solid rgba(255,255,255,0.3)',
-              paddingBottom: 4,
-              transition: 'color 0.3s, border-color 0.3s',
+              fontSize: 9, letterSpacing: '0.32em', textTransform: 'uppercase', fontWeight: 300,
+              transition: 'color 0.3s',
             }}
-            onMouseEnter={(e) => { e.currentTarget.style.color = '#fff'; e.currentTarget.style.borderBottomColor = 'rgba(255,255,255,0.75)'; }}
-            onMouseLeave={(e) => { e.currentTarget.style.color = 'rgba(255,255,255,0.75)'; e.currentTarget.style.borderBottomColor = 'rgba(255,255,255,0.3)'; }}
+            onMouseEnter={(e) => { e.currentTarget.style.color = 'rgba(255,255,255,0.75)'; }}
+            onMouseLeave={(e) => { e.currentTarget.style.color = 'rgba(255,255,255,0.45)'; }}
           >
             Découvrir les prestations
           </a>
