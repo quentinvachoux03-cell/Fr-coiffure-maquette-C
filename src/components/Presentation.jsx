@@ -9,7 +9,6 @@ const BASE       = '/Fr-coiffure-maquette-C';
 const E          = 'cubic-bezier(0.16, 1, 0.3, 1)';
 
 const SLIDES = [
-  { src: `${BASE}/frederico-renda.jpg`,                           caption: 'Federico Renda'      },
   { src: `${BASE}/tn2-galeries-201929-fr-coiffure-geneve-01.jpg`, caption: 'Salon Plainpalais'   },
   { src: `${BASE}/tn2-galeries-201931-fr-coiffure-geneve-05.jpg`, caption: 'FR Coiffure'         },
   { src: `${BASE}/tn2-galeries-204545-41152.jpg`,                 caption: 'Plainpalais, Genève' },
