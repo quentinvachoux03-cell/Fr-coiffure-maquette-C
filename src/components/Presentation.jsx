@@ -23,7 +23,7 @@ function PhotoSlider() {
       setPrev(current);
       setFading(true);
       setCurrent(i => (i + 1) % SLIDES.length);
-    }, 3000);
+    }, 5000);
     return () => clearInterval(timer);
   }, [current]);
 
