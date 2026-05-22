@@ -1,0 +1,82 @@
+import HairPortrait from './HairPortrait';
+import { TEAM } from '../data';
+
+const C_ANTH     = '#3A3A3A';
+const C_ORANGE   = '#D94018';
+const C_HAIRLINE = 'rgba(58,58,58,0.18)';
+
+export default function Team() {
+  return (
+    <section
+      id="team"
+      className="px-16 py-32 font-sans border-t"
+      style={{ borderColor: C_HAIRLINE }}
+    >
+      <div className="flex items-end justify-between mb-16">
+        <div>
+          <div
+            className="inline-flex items-center gap-4 mb-6 font-light"
+            style={{ fontSize: 11, letterSpacing: '0.4em', textTransform: 'uppercase', color: C_ORANGE }}
+          >
+            <span style={{ display: 'inline-block', width: 32, height: 1, background: C_ORANGE }}></span>
+            03 — La Team
+          </div>
+          <h2
+            className="font-sans font-light m-0"
+            style={{ color: C_ANTH, fontSize: 54, lineHeight: 1.05, letterSpacing: '-0.02em' }}
+          >
+            Les{' '}
+            <em className="italic" style={{ color: C_ORANGE }}>visages</em>
+            {' '}de la maison.
+          </h2>
+        </div>
+        <a
+          href="#"
+          className="font-light"
+          style={{
+            color: C_ANTH, textDecoration: 'none',
+            fontSize: 11, letterSpacing: '0.28em', textTransform: 'uppercase',
+            borderBottom: '1px solid rgba(58,58,58,0.3)', paddingBottom: 4,
+            transition: 'color 0.2s, border-color 0.2s',
+          }}
+          onMouseEnter={(e) => { e.currentTarget.style.color = C_ORANGE; e.currentTarget.style.borderBottomColor = C_ORANGE; }}
+          onMouseLeave={(e) => { e.currentTarget.style.color = C_ANTH; e.currentTarget.style.borderBottomColor = 'rgba(58,58,58,0.3)'; }}
+        >
+          Toute l'équipe →
+        </a>
+      </div>
+
+      <div className="grid grid-cols-3 gap-10">
+        {TEAM.map((member, i) => (
+          <div key={member.name}>
+            <div className="relative" style={{ aspectRatio: '4/5' }}>
+              <HairPortrait variant={member.variant} frame="thin" idSeed={310 + i} />
+            </div>
+            <div className="mt-5 pt-5 border-t" style={{ borderColor: C_HAIRLINE }}>
+              <div className="flex items-baseline justify-between">
+                <div
+                  className="font-sans font-light tracking-tight"
+                  style={{ fontSize: 22, color: C_ANTH }}
+                >
+                  {member.name}
+                </div>
+                <span
+                  className="font-light"
+                  style={{ fontSize: 11, letterSpacing: '0.2em', textTransform: 'uppercase', color: C_ORANGE }}
+                >
+                  depuis {member.since}
+                </span>
+              </div>
+              <div
+                className="mt-2 font-sans font-light"
+                style={{ fontSize: 11, letterSpacing: '0.22em', textTransform: 'uppercase', color: '#8d8479' }}
+              >
+                {member.role}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
