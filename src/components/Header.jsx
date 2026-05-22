@@ -35,7 +35,7 @@ export default function Header({ onMenu }) {
   return (
     <header
       className="sticky top-0 z-30 backdrop-blur-md border-b"
-      style={{ background: 'rgba(239,229,214,0.85)', borderColor: C_HAIRLINE }}
+      style={{ background: 'rgba(232,232,232,0.88)', borderColor: C_HAIRLINE }}
     >
       <div
         className="grid items-center px-4 sm:px-8 lg:px-16 py-4 font-sans"

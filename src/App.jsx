@@ -13,7 +13,7 @@ export default function App() {
   return (
     <div
       className="relative w-full font-sans"
-      style={{ background: '#efe5d6', color: '#3A3A3A', minHeight: '100vh' }}
+      style={{ background: '#E8E8E8', color: '#3A3A3A', minHeight: '100vh' }}
     >
       <Header onMenu={() => setMenuOpen(true)} />
       <Hero />

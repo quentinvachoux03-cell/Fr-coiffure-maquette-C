@@ -2,7 +2,7 @@
 
 const VARIANTS = {
   editorialFlow: {
-    base: '#e5d8c5',
+    base: '#E0E0E0',
     render: (id) => (
       <g>
         <defs>

@@ -4,7 +4,7 @@ import { MENU_SECTIONS } from '../data';
 
 const C_ORANGE = '#D94018';
 const C_ANTH   = '#3A3A3A';
-const C_SAND   = '#efe5d6';
+const C_SAND   = '#E8E8E8';
 
 export default function MenuOverlay({ open, onClose }) {
   useEffect(() => {

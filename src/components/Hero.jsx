@@ -1,5 +1,3 @@
-import HairPortrait from './HairPortrait';
-
 const C_ANTH   = '#3A3A3A';
 const C_ORANGE = '#D94018';
 const E = 'cubic-bezier(0.16, 1, 0.3, 1)';
@@ -86,9 +84,33 @@ export default function Hero() {
 
         <div
           className="relative w-full max-w-[320px] sm:max-w-[400px] mx-auto lg:max-w-none mt-4 lg:mt-0"
-          style={{ aspectRatio: '4/5', animation: `hero-photo 1.4s 0.38s ${E} both` }}
+          style={{
+            aspectRatio: '4/5',
+            animation: `hero-photo 1.4s 0.38s ${E} both`,
+            padding: 14,
+            background: '#fff',
+            boxShadow: '0 22px 60px rgba(58,58,58,0.14), 0 2px 6px rgba(58,58,58,0.07)',
+          }}
         >
-          <HairPortrait variant="editorialFlow" frame="card" caption="Pl. № 01" sig="Salon Plainpalais" idSeed={201} />
+          <div style={{ position: 'relative', width: '100%', height: '100%', overflow: 'hidden' }}>
+            <img
+              src="/Fr-coiffure-maquette-C/0c6b9dc490423c4231acc52027aa416e.jpg"
+              alt="FR Coiffure — Salon Plainpalais"
+              style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center center', display: 'block' }}
+            />
+            <div style={{
+              position: 'absolute', left: 0, right: 0, bottom: 0,
+              display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end',
+              padding: '28px 16px 12px',
+              background: 'linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.32) 100%)',
+              color: '#fff',
+              fontFamily: "'Open Sans', sans-serif",
+              fontSize: 10, letterSpacing: '0.25em', textTransform: 'uppercase', fontWeight: 300,
+            }}>
+              <span>Pl. № 01</span>
+              <em style={{ fontStyle: 'italic', letterSpacing: '0.08em', textTransform: 'none', fontSize: 11 }}>Salon Plainpalais</em>
+            </div>
+          </div>
         </div>
       </div>
     </section>
