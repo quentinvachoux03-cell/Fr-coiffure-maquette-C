@@ -54,17 +54,18 @@ export default function Showreel() {
 
         {/* Title — same style as the rest of the site */}
         <h1 style={{
-          margin: '0 0 48px',
+          margin: '0 0 40px',
           animation: `hero-in 1s 0.25s ${E} both`,
           fontFamily: "'Open Sans', sans-serif",
-          fontWeight: 300,
-          fontSize: 'clamp(32px, 6vw, 68px)',
-          letterSpacing: '-0.01em',
-          lineHeight: 1.05,
-          color: '#fff',
+          fontWeight: 200,
+          fontSize: 'clamp(22px, 4vw, 46px)',
+          letterSpacing: '0.55em',
+          textTransform: 'uppercase',
+          color: 'rgba(255,255,255,0.82)',
+          lineHeight: 1,
+          paddingLeft: '0.55em',
         }}>
-          FR{' '}
-          <em style={{ fontStyle: 'italic', fontWeight: 300, color: C_ORANGE }}>Coiffure</em>
+          FR Coiffure
         </h1>
 
         <div style={{

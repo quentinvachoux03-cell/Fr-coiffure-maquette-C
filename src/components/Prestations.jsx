@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { SERVICES } from '../data';
 import { useReveal } from '../hooks/useReveal';
+import GalleryAnimation from './GalleryAnimation';
 
 const C_ANTH     = '#3A3A3A';
 const C_ORANGE   = '#D94018';
@@ -11,14 +12,18 @@ function ServiceCard({ service, index }) {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className={`a-up a-d${Math.min(index + 1, 6)}`}
-      style={{ padding: 'clamp(24px, 3.5vw, 44px) clamp(16px, 2vw, 28px)' }}>
-
+    <div
+      className={`a-up a-d${Math.min(index + 1, 6)}`}
+      style={{
+        padding: 'clamp(18px, 2.5vw, 32px) 0',
+        borderBottom: `1px solid ${C_HAIRLINE}`,
+      }}
+    >
       <div style={{
         fontFamily: "'Open Sans',sans-serif", fontSize: 9,
         letterSpacing: '0.55em', textTransform: 'uppercase',
         color: open ? C_ORANGE : 'rgba(58,58,58,0.3)',
-        fontWeight: 300, marginBottom: 14,
+        fontWeight: 300, marginBottom: 10,
         transition: 'color 0.3s',
       }}>
         {service.n}
@@ -34,7 +39,7 @@ function ServiceCard({ service, index }) {
         }}
       >
         <h3 style={{
-          margin: 0, fontSize: 'clamp(18px, 2.2vw, 26px)',
+          margin: 0, fontSize: 'clamp(16px, 1.8vw, 22px)',
           fontWeight: 300, letterSpacing: '-0.005em', lineHeight: 1.05,
           color: open ? C_ORANGE : C_ANTH,
           transition: 'color 0.3s',
@@ -42,7 +47,7 @@ function ServiceCard({ service, index }) {
           {service.title}
         </h3>
         <span style={{
-          display: 'inline-block', fontSize: 18, fontWeight: 300, flexShrink: 0, marginTop: 2,
+          display: 'inline-block', fontSize: 18, fontWeight: 300, flexShrink: 0, marginTop: 1,
           color: open ? C_ORANGE : 'rgba(58,58,58,0.28)',
           transform: open ? 'rotate(45deg)' : 'rotate(0deg)',
           transition: `transform 0.45s ${E}, color 0.3s`,
@@ -55,7 +60,7 @@ function ServiceCard({ service, index }) {
         transition: `grid-template-rows 0.52s ${E}`,
       }}>
         <div style={{ overflow: 'hidden' }}>
-          <ul style={{ listStyle: 'none', padding: '14px 0 4px', margin: 0, display: 'flex', flexDirection: 'column', gap: 8 }}>
+          <ul style={{ listStyle: 'none', padding: '12px 0 4px', margin: 0, display: 'flex', flexDirection: 'column', gap: 7 }}>
             {service.items.map((item, i) => (
               <li key={item} style={{
                 fontFamily: "'Open Sans',sans-serif",
@@ -108,11 +113,24 @@ export default function Prestations() {
         </div>
       </div>
 
+      {/* Split layout: accordion left, gallery right */}
       <div className="px-5 sm:px-8 lg:px-16 pb-14 lg:pb-24">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-          {SERVICES.map((s, i) => (
-            <ServiceCard key={s.n} service={s} index={i} />
-          ))}
+        <div className="flex flex-col lg:flex-row gap-12 lg:gap-16">
+
+          {/* LEFT — Service accordions */}
+          <div className="lg:w-1/2 flex flex-col border-t" style={{ borderColor: C_HAIRLINE }}>
+            {SERVICES.map((s, i) => (
+              <ServiceCard key={s.n} service={s} index={i} />
+            ))}
+          </div>
+
+          {/* RIGHT — Animated gallery (hidden on mobile, shown on lg+) */}
+          <div
+            className="hidden lg:block lg:w-1/2 a-scale a-d2"
+            style={{ height: 'clamp(400px, 60vh, 680px)', position: 'sticky', top: 80 }}
+          >
+            <GalleryAnimation />
+          </div>
         </div>
 
         <div className="a-up a-d6 flex flex-col sm:flex-row sm:items-center justify-between gap-5 mt-8 pt-8 border-t"
