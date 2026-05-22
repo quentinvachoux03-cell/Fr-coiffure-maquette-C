@@ -85,17 +85,19 @@ export default function Showreel() {
           <a
             href="#reservation"
             style={{
-              display: 'inline-flex', alignItems: 'center', gap: 10,
-              background: C_ORANGE, color: '#fff',
-              padding: '15px 36px',
-              borderRadius: 999,
+              display: 'inline-flex', alignItems: 'center', gap: 12,
+              background: 'transparent',
+              border: '1px solid rgba(255,255,255,0.55)',
+              color: 'rgba(255,255,255,0.92)',
+              padding: '14px 36px',
+              borderRadius: 0,
               textDecoration: 'none',
               fontFamily: "'Open Sans', sans-serif",
-              fontSize: 12, letterSpacing: '0.28em', textTransform: 'uppercase', fontWeight: 400,
-              transition: 'background 0.3s',
+              fontSize: 11, letterSpacing: '0.32em', textTransform: 'uppercase', fontWeight: 300,
+              transition: 'background 0.35s, border-color 0.35s, color 0.35s',
             }}
-            onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(255,255,255,0.18)'}
-            onMouseLeave={(e) => e.currentTarget.style.background = C_ORANGE}
+            onMouseEnter={(e) => { e.currentTarget.style.background = 'rgba(255,255,255,0.1)'; e.currentTarget.style.borderColor = 'rgba(255,255,255,0.85)'; }}
+            onMouseLeave={(e) => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.borderColor = 'rgba(255,255,255,0.55)'; }}
           >
             Prendre rendez-vous <span aria-hidden="true">→</span>
           </a>

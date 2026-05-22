@@ -100,15 +100,17 @@ export default function Header({ onMenu }) {
             style={{
               marginLeft: 4,
               display: 'inline-flex', alignItems: 'center', gap: 8,
-              background: C_ORANGE, color: '#fff',
-              padding: '9px 16px',
-              borderRadius: 999,
+              background: 'transparent',
+              border: tr ? '1px solid rgba(255,255,255,0.5)' : '1px solid rgba(58,58,58,0.45)',
+              color: textCol,
+              padding: '8px 16px',
+              borderRadius: 0,
               textDecoration: 'none',
-              fontSize: 11, letterSpacing: '0.28em', textTransform: 'uppercase', fontWeight: 400,
-              transition: 'background 0.2s',
+              fontSize: 11, letterSpacing: '0.28em', textTransform: 'uppercase', fontWeight: 300,
+              transition: 'background 0.3s, border-color 0.3s, color 0.4s',
             }}
-            onMouseEnter={(e) => e.currentTarget.style.background = C_ANTH}
-            onMouseLeave={(e) => e.currentTarget.style.background = C_ORANGE}
+            onMouseEnter={(e) => { e.currentTarget.style.background = tr ? 'rgba(255,255,255,0.1)' : 'rgba(58,58,58,0.07)'; }}
+            onMouseLeave={(e) => { e.currentTarget.style.background = 'transparent'; }}
           >
             <span className="hidden sm:inline">Réserver </span>
             <span aria-hidden="true">→</span>

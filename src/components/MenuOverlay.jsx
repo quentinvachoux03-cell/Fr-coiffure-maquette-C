@@ -130,10 +130,18 @@ export default function MenuOverlay({ open, onClose }) {
           <span>Lundi — Samedi · 9h — 19h</span>
           <span className="mc-footer-info">contact@frcoiffure.ch · +41 (0)22 320 00 00</span>
           <a href="#reservation" onClick={onClose} style={{
-            display: 'inline-flex', alignItems: 'center', gap: 10, background: C_ORANGE, color: '#fff',
-            padding: '10px 22px', borderRadius: 999, fontFamily: 'inherit',
+            display: 'inline-flex', alignItems: 'center', gap: 10,
+            background: 'transparent',
+            border: '1px solid rgba(58,58,58,0.45)',
+            color: C_ANTH,
+            padding: '10px 22px', borderRadius: 0, fontFamily: 'inherit',
             fontSize: 11, letterSpacing: '0.28em', textTransform: 'uppercase', textDecoration: 'none',
-          }}>Réserver →</a>
+            fontWeight: 300,
+            transition: 'background 0.3s, border-color 0.3s',
+          }}
+          onMouseEnter={(e) => { e.currentTarget.style.background = 'rgba(58,58,58,0.07)'; e.currentTarget.style.borderColor = C_ANTH; }}
+          onMouseLeave={(e) => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.borderColor = 'rgba(58,58,58,0.45)'; }}
+          >Réserver →</a>
         </div>
       </div>
     </div>,
