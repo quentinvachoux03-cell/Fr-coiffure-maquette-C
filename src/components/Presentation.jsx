@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { PRESENTATION } from '../data';
 import { useReveal } from '../hooks/useReveal';
 
@@ -8,24 +8,40 @@ const C_HAIRLINE = 'rgba(58,58,58,0.18)';
 const BASE       = '/Fr-coiffure-maquette-C';
 
 const SLIDES = [
-  { src: `${BASE}/frederico-renda.jpg`,                           caption: 'Federico Renda',      pos: 'center center' },
-  { src: `${BASE}/tn2-galeries-201929-fr-coiffure-geneve-01.jpg`, caption: 'Salon Plainpalais',   pos: 'center center' },
-  { src: `${BASE}/tn2-galeries-201931-fr-coiffure-geneve-05.jpg`, caption: 'FR Coiffure',         pos: 'center center' },
-  { src: `${BASE}/tn2-galeries-204545-41152.jpg`,                  caption: 'Plainpalais, Genève', pos: 'center center' },
+  { src: `${BASE}/frederico-renda.jpg`,                           caption: 'Federico Renda'      },
+  { src: `${BASE}/tn2-galeries-201929-fr-coiffure-geneve-01.jpg`, caption: 'Salon Plainpalais'   },
+  { src: `${BASE}/tn2-galeries-201931-fr-coiffure-geneve-05.jpg`, caption: 'FR Coiffure'         },
+  { src: `${BASE}/tn2-galeries-204545-41152.jpg`,                 caption: 'Plainpalais, Genève' },
 ];
 
-function PhotoSlider() {
+const E = 'cubic-bezier(0.16, 1, 0.3, 1)';
+
+function PhotoSlider({ sectionRef }) {
   const [current, setCurrent] = useState(0);
   const [prev, setPrev]       = useState(null);
   const [fading, setFading]   = useState(false);
+  const wrapRef               = useRef(null);
 
+  /* Subtle parallax on scroll */
   useEffect(() => {
-    const timer = setInterval(() => {
+    const onScroll = () => {
+      if (!sectionRef?.current || !wrapRef.current) return;
+      const rect = sectionRef.current.getBoundingClientRect();
+      const pct  = Math.max(-1, Math.min(1, -rect.top / window.innerHeight));
+      wrapRef.current.style.transform = `translateY(${pct * 28}px)`;
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, [sectionRef]);
+
+  /* Auto-advance */
+  useEffect(() => {
+    const t = setInterval(() => {
       setPrev(current);
       setFading(true);
       setCurrent(i => (i + 1) % SLIDES.length);
     }, 5000);
-    return () => clearInterval(timer);
+    return () => clearInterval(t);
   }, [current]);
 
   useEffect(() => {
@@ -35,123 +51,149 @@ function PhotoSlider() {
   }, [fading]);
 
   return (
-    <div
-      style={{
-        aspectRatio: '4/5',
-        padding: 14,
-        background: '#fff',
-        boxShadow: '0 22px 60px rgba(58,58,58,0.16), 0 2px 6px rgba(58,58,58,0.08)',
-      }}
-      className="a-scale relative w-full max-w-[320px] sm:max-w-[380px] mx-auto lg:max-w-none lg:mt-10"
-    >
+    <div style={{ position: 'relative', width: '100%', height: '100%', overflow: 'hidden' }}>
       <style>{`
-        @keyframes slide-in  { from { opacity:0; transform:scale(1.04); } to { opacity:1; transform:none; } }
-        @keyframes slide-out { from { opacity:1; transform:none; }        to { opacity:0; transform:scale(0.97); } }
+        @keyframes pres-in  { from { opacity:0; transform:scale(1.05); } to { opacity:1; transform:scale(1); } }
+        @keyframes pres-out { from { opacity:1; transform:scale(1);    } to { opacity:0; transform:scale(0.97); } }
       `}</style>
-      <div style={{ position: 'relative', width: '100%', height: '100%', overflow: 'hidden' }}>
+
+      <div ref={wrapRef} style={{ position:'absolute', inset:'-8% 0', willChange:'transform' }}>
         {prev !== null && (
           <img key={`out-${prev}`} src={SLIDES[prev].src} alt="" aria-hidden="true"
             style={{ position:'absolute', inset:0, width:'100%', height:'100%',
-              objectFit:'cover', objectPosition: SLIDES[prev].pos,
-              animation: 'slide-out 0.9s cubic-bezier(0.4,0,0.2,1) both' }}
-          />
+              objectFit:'cover', objectPosition:'center',
+              animation:`pres-out 0.9s ${E} both` }} />
         )}
         <img key={`in-${current}`} src={SLIDES[current].src} alt={SLIDES[current].caption}
           style={{ position:'absolute', inset:0, width:'100%', height:'100%',
-            objectFit:'cover', objectPosition: SLIDES[current].pos,
-            animation: 'slide-in 0.9s cubic-bezier(0.4,0,0.2,1) both' }}
-        />
-        <div style={{
-          position:'absolute', left:0, right:0, bottom:0, zIndex:2,
-          display:'flex', justifyContent:'space-between', alignItems:'flex-end',
-          padding:'28px 16px 12px',
-          background:'linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.35) 100%)',
-          color:'#fff', fontFamily:"'Open Sans', sans-serif",
-          fontSize:10, letterSpacing:'0.25em', textTransform:'uppercase', fontWeight:300,
-        }}>
-          <em style={{ fontStyle:'italic', letterSpacing:'0.08em', textTransform:'none', fontSize:11 }}>
-            {SLIDES[current].caption}
-          </em>
-          <div style={{ display:'flex', gap:6 }}>
-            {SLIDES.map((_, i) => (
-              <button key={i}
-                onClick={() => { setPrev(current); setFading(true); setCurrent(i); }}
-                style={{
-                  width: i === current ? 18 : 5, height: 5, borderRadius: 99,
-                  background: i === current ? '#fff' : 'rgba(255,255,255,0.45)',
-                  border:'none', cursor:'pointer', padding:0,
-                  transition:'width 0.4s cubic-bezier(0.4,0,0.2,1), background 0.3s',
-                }}
-                aria-label={`Photo ${i + 1}`}
-              />
-            ))}
-          </div>
-        </div>
+            objectFit:'cover', objectPosition:'center',
+            animation:`pres-in 0.9s ${E} both` }} />
+      </div>
+
+      {/* Caption */}
+      <div style={{
+        position:'absolute', bottom:20, left:20, zIndex:2,
+        fontFamily:"'Open Sans',sans-serif", fontSize:9,
+        letterSpacing:'0.35em', textTransform:'uppercase',
+        color:'rgba(255,255,255,0.6)', fontWeight:300,
+      }}>
+        {SLIDES[current].caption}
+      </div>
+
+      {/* Dots */}
+      <div style={{ position:'absolute', bottom:20, right:20, zIndex:2, display:'flex', gap:5 }}>
+        {SLIDES.map((_, i) => (
+          <button key={i}
+            onClick={() => { setPrev(current); setFading(true); setCurrent(i); }}
+            aria-label={`Photo ${i + 1}`}
+            style={{
+              width: i === current ? 20 : 5, height:5, borderRadius:99,
+              background: i === current ? '#fff' : 'rgba(255,255,255,0.35)',
+              border:'none', cursor:'pointer', padding:0,
+              transition:`width 0.45s ${E}, background 0.3s`,
+            }} />
+        ))}
       </div>
     </div>
   );
 }
 
+const STATS = [
+  { value: '+15 ans', label: 'à Plainpalais, Genève' },
+  { value: '6',       label: 'artisans coiffeurs',    accent: true },
+  { value: '∞',       label: 'sur-mesure, toujours'  },
+];
+
 export default function Presentation() {
-  const ref = useReveal();
+  const sectionRef = useRef(null);
+  const revealRef  = useReveal();
+
+  /* Merge both refs */
+  const ref = (el) => {
+    sectionRef.current = el;
+    revealRef.current  = el;
+  };
+
   return (
     <section
       ref={ref}
-      className="px-5 sm:px-8 lg:px-16 py-16 lg:py-32 font-sans border-t"
+      id="salon"
+      className="font-sans border-t"
       style={{ borderColor: C_HAIRLINE }}
     >
-      <div className="grid grid-cols-1 lg:grid-cols-[0.95fr_1.05fr] items-start gap-10 lg:gap-24">
+      {/* ── Editorial split ── */}
+      <div className="grid grid-cols-1 lg:grid-cols-2" style={{ minHeight: '88vh' }}>
 
-        <PhotoSlider />
-
-        <div className="pt-0 lg:pt-6">
-          <div
-            className="a-up inline-flex items-center gap-4 mb-5 lg:mb-6 font-light"
-            style={{ fontSize: 11, letterSpacing: '0.4em', textTransform: 'uppercase', color: C_ORANGE }}
-          >
-            <span style={{ display: 'inline-block', width: 32, height: 1, background: C_ORANGE }}></span>
-            01 — Le salon
+        {/* Left — text */}
+        <div
+          className="flex flex-col justify-center px-5 sm:px-8 lg:px-16 py-20 lg:py-28 order-2 lg:order-1"
+        >
+          <div className="a-up inline-flex items-center gap-3 mb-10 lg:mb-14 font-light"
+            style={{ fontSize:10, letterSpacing:'0.48em', textTransform:'uppercase', color:C_ORANGE }}>
+            <span style={{ display:'inline-block', width:20, height:1, background:C_ORANGE }} />
+            01 — Le Salon
           </div>
 
-          <h2
-            className="a-up a-d1 font-sans font-light m-0"
-            style={{ color: C_ANTH, fontSize: 'clamp(28px, 6vw, 54px)', lineHeight: 1.05, letterSpacing: '-0.02em' }}
-          >
+          <h2 className="a-up a-d1 font-sans font-light m-0"
+            style={{ color:C_ANTH, fontSize:'clamp(34px, 5vw, 64px)', lineHeight:1.0, letterSpacing:'-0.025em' }}>
             Une{' '}
-            <em className="italic" style={{ color: C_ORANGE }}>signature</em>
-            {' '}genevoise,<br/>
-            une approche personnalisée.
+            <em className="italic" style={{ color:C_ORANGE }}>signature</em>
+            {' '}genevoise,<br />
+            une approche<br />
+            personnalisée.
           </h2>
 
-          <p
-            className="a-up a-d2 font-sans font-light mt-7 lg:mt-10 max-w-[520px]"
-            style={{ fontSize: 'clamp(14px, 2.5vw, 16.5px)', lineHeight: 1.85, color: '#5e564e' }}
-          >
+          <p className="a-up a-d2 font-sans font-light"
+            style={{
+              fontSize:'clamp(14px, 1.4vw, 16px)', lineHeight:1.95,
+              color:'#6b6358', marginTop:'clamp(28px, 4vw, 48px)',
+              maxWidth:420,
+            }}>
             {PRESENTATION}
           </p>
 
-          <div
-            className="a-up a-d3 grid grid-cols-3 gap-4 mt-10 lg:mt-12 pt-6 lg:pt-8 border-t max-w-[560px]"
-            style={{ borderColor: C_HAIRLINE }}
+          <a
+            href="#prestations"
+            className="a-up a-d3 self-start inline-flex items-center gap-3 font-light"
+            style={{
+              marginTop:'clamp(28px, 4vw, 52px)',
+              fontSize:11, letterSpacing:'0.3em', textTransform:'uppercase',
+              color:C_ANTH, textDecoration:'none',
+              borderBottom:`1px solid rgba(58,58,58,0.3)`, paddingBottom:4,
+              transition:'color 0.3s, border-color 0.3s',
+            }}
+            onMouseEnter={e => { e.currentTarget.style.color = C_ORANGE; e.currentTarget.style.borderBottomColor = C_ORANGE; }}
+            onMouseLeave={e => { e.currentTarget.style.color = C_ANTH;   e.currentTarget.style.borderBottomColor = 'rgba(58,58,58,0.3)'; }}
           >
-            {[
-              ['+15 ans', 'à Plainpalais'],
-              ['6', 'artisans coiffeurs'],
-              ['Sur-mesure', 'chaque rendez-vous'],
-            ].map(([key, val], i) => (
-              <div key={key}>
-                <div className="font-sans font-light tracking-tight"
-                  style={{ fontSize: 'clamp(15px, 3vw, 20px)', color: i === 1 ? C_ORANGE : C_ANTH }}>
-                  {key}
-                </div>
-                <div className="mt-1 font-sans"
-                  style={{ fontSize: 10, letterSpacing: '0.2em', textTransform: 'uppercase', color: '#8d8479' }}>
-                  {val}
-                </div>
-              </div>
-            ))}
-          </div>
+            Voir nos prestations →
+          </a>
         </div>
+
+        {/* Right — full-bleed image, no frame */}
+        <div className="a-fade relative order-1 lg:order-2 overflow-hidden"
+          style={{ minHeight:'55vw', maxHeight:'100vh' }}>
+          <PhotoSlider sectionRef={sectionRef} />
+        </div>
+      </div>
+
+      {/* ── Stats strip ── */}
+      <div className="a-up grid grid-cols-3 border-t" style={{ borderColor:C_HAIRLINE }}>
+        {STATS.map(({ value, label, accent }, i) => (
+          <div key={label}
+            className="px-5 sm:px-8 lg:px-16 py-8 lg:py-14"
+            style={{
+              borderRight: i < 2 ? `1px solid ${C_HAIRLINE}` : 'none',
+            }}>
+            <div className="font-sans font-light"
+              style={{ fontSize:'clamp(24px, 4vw, 48px)', letterSpacing:'-0.025em', lineHeight:1, color: accent ? C_ORANGE : C_ANTH }}>
+              {value}
+            </div>
+            <div className="mt-2 font-sans font-light"
+              style={{ fontSize:10, letterSpacing:'0.28em', textTransform:'uppercase', color:'#9c8f7e' }}>
+              {label}
+            </div>
+          </div>
+        ))}
       </div>
     </section>
   );
