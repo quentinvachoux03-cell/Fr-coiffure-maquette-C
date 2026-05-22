@@ -58,15 +58,15 @@ export default function Showreel() {
           animation: `hero-in 1s 0.25s ${E} both`,
           fontFamily: "'Open Sans', sans-serif",
           fontWeight: 300,
-          fontSize: 'clamp(48px, 11vw, 130px)',
+          fontSize: 'clamp(26px, 5vw, 58px)',
           letterSpacing: '0.18em',
           textTransform: 'uppercase',
-          color: '#fff',
+          color: 'rgba(255,255,255,0.92)',
           lineHeight: 1,
-          textShadow: '0 2px 24px rgba(0,0,0,0.18)',
+          textAlign: 'left',
+          width: '100%',
         }}>
-          <span style={{ color: C_ORANGE, fontWeight: 600 }}>FR</span>
-          {' '}Coiffure
+          FR Coiffure
         </h1>
 
         <div style={{
