@@ -31,7 +31,7 @@ export default function IntroSection() {
         {/* Main title — big, thin, editorial */}
         <h2 className="a-up a-d1 m-0 font-sans" style={{
           fontWeight: 300,
-          fontSize: 'clamp(52px, 11vw, 148px)',
+          fontSize: 'clamp(34px, 5.5vw, 72px)',
           lineHeight: 0.9,
           letterSpacing: '-0.02em',
           color: C_ANTH,
