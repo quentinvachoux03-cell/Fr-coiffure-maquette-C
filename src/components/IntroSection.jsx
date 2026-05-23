@@ -4,6 +4,7 @@ const C_ANTH     = '#3A3A3A';
 const C_ORANGE   = '#D94018';
 const C_HAIRLINE = 'rgba(58,58,58,0.12)';
 const E          = 'cubic-bezier(0.16, 1, 0.3, 1)';
+const BASE       = '/Fr-coiffure-maquette-C';
 
 export default function IntroSection() {
   const ref = useReveal();
@@ -69,13 +70,13 @@ export default function IntroSection() {
         </a>
       </div>
 
-      {/* ── BOTTOM BLOCK — two columns ── */}
+      {/* ── BOTTOM BLOCK — band: text left, photo right, no gap ── */}
       <div
-        className="border-t px-5 sm:px-8 lg:px-16 py-16 lg:py-24 flex flex-col lg:flex-row gap-12 lg:gap-24"
-        style={{ borderColor: C_HAIRLINE }}
+        className="border-t flex flex-col lg:flex-row"
+        style={{ borderColor: C_HAIRLINE, minHeight: 'clamp(360px, 55vw, 600px)' }}
       >
         {/* LEFT — name block */}
-        <div className="lg:w-5/12">
+        <div className="lg:w-5/12 px-5 sm:px-8 lg:px-16 py-14 lg:py-20 flex flex-col justify-center">
           <p className="a-up m-0" style={{
             fontFamily: "'Sacramento', cursive",
             fontSize: 'clamp(26px, 3.5vw, 44px)',
@@ -103,55 +104,18 @@ export default function IntroSection() {
           </p>
         </div>
 
-        {/* RIGHT — description */}
-        <div className="lg:w-7/12 flex flex-col justify-center gap-8">
-          <p className="a-up a-d2 font-sans font-light m-0" style={{
-            fontSize: 'clamp(13px, 1.2vw, 16px)',
-            lineHeight: 2,
-            color: '#6e6560',
-            maxWidth: 520,
-          }}>
-            Fondé par Federico Renda dans le quartier de Plainpalais, FR Coiffure s'est rapidement imposé comme une référence genevoise grâce à son style moderne, son approche sur-mesure et son expertise en coupes, colorations et soins capillaires.
-          </p>
-
-          <div className="a-up a-d3 flex flex-col sm:flex-row gap-6">
-            <a href="#/salon"
-              className="font-sans font-light"
-              style={{
-                fontSize: 10, letterSpacing: '0.38em', textTransform: 'uppercase',
-                color: C_ANTH, textDecoration: 'none',
-                borderBottom: `1px solid rgba(58,58,58,0.25)`, paddingBottom: 4,
-                transition: 'color 0.3s, border-color 0.3s',
-              }}
-              onMouseEnter={e => { e.currentTarget.style.color = C_ORANGE; e.currentTarget.style.borderBottomColor = C_ORANGE; }}
-              onMouseLeave={e => { e.currentTarget.style.color = C_ANTH; e.currentTarget.style.borderBottomColor = 'rgba(58,58,58,0.25)'; }}
-            >
-              Découvrir le salon →
-            </a>
-            <a href="#prestations"
-              className="font-sans font-light"
-              style={{
-                fontSize: 10, letterSpacing: '0.38em', textTransform: 'uppercase',
-                color: 'rgba(58,58,58,0.45)', textDecoration: 'none',
-                borderBottom: `1px solid rgba(58,58,58,0.15)`, paddingBottom: 4,
-                transition: 'color 0.3s, border-color 0.3s',
-              }}
-              onMouseEnter={e => { e.currentTarget.style.color = C_ORANGE; e.currentTarget.style.borderBottomColor = C_ORANGE; }}
-              onMouseLeave={e => { e.currentTarget.style.color = 'rgba(58,58,58,0.45)'; e.currentTarget.style.borderBottomColor = 'rgba(58,58,58,0.15)'; }}
-            >
-              Voir les prestations →
-            </a>
-          </div>
-
-          {/* Stats strip */}
-          <div className="a-up a-d4 flex gap-10 pt-6 border-t" style={{ borderColor: C_HAIRLINE }}>
-            {[['2008', 'Fondé'], ['6', 'Artisans'], ['100%', 'Sur-mesure']].map(([num, label]) => (
-              <div key={label}>
-                <div style={{ fontWeight: 300, fontSize: 'clamp(22px, 3vw, 36px)', color: C_ANTH, letterSpacing: '-0.02em', lineHeight: 1 }}>{num}</div>
-                <div style={{ fontFamily: "'Open Sans',sans-serif", fontSize: 9, letterSpacing: '0.38em', textTransform: 'uppercase', color: 'rgba(58,58,58,0.38)', fontWeight: 300, marginTop: 6 }}>{label}</div>
-              </div>
-            ))}
-          </div>
+        {/* RIGHT — photo fills the full band height */}
+        <div className="a-scale a-d2 lg:w-7/12" style={{ overflow: 'hidden', minHeight: 'clamp(280px, 40vw, 520px)', position: 'relative' }}>
+          <img
+            src={`${BASE}/Photo%20exemple%20salon.png`}
+            alt="FR Coiffure — Salon Plainpalais"
+            style={{
+              position: 'absolute', inset: 0,
+              width: '100%', height: '100%',
+              objectFit: 'cover', objectPosition: 'center center',
+              display: 'block',
+            }}
+          />
         </div>
       </div>
     </section>
